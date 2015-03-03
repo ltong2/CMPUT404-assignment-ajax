@@ -39,14 +39,14 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
         if (xhr.readyState==4) {
             try {
                 if (xhr.status==200) {
-                    data=JSON.parse(xhr.responseText);
-                    callback(data);
+                    var d=JSON.parse(xhr.responseText);
+                    callback(d);
                     //XXX: parse some JSON from the request!
                     //XXX: Pass the data to the callback!
                 }
             } 
             catch(e) {
-                alert('Error: ' + e.name);
+                alert('Error:8 ' + e.name);
             }
         }
     };
@@ -157,7 +157,7 @@ function addEntity(entity, data) {
     //XXX: Send a XHTML Request that updates the entity you just  modified!
     var data1=encodeURIComponent(entity);
     var url= '/entity/'+data1;
-    sendJSONXMLHTTPRequest(url,data,null);
+    sendJSONXMLHTTPRequest(url,data,function(data){});
 }
 
 var counter = 0;
